@@ -11,3 +11,8 @@ Instalar bibliotecas em _requirements.txt_
 Iniciar `run.sh ou run.bat` para executar scripts python;
 
 URL de acesso: http://localhost:8000
+
+Credenciais de acesso ao sistema para demonstração:
+
+- Usuário: admin
+- Senha: acesso123
