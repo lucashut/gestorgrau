@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Lista de produtos{% endblock %}
+
+{% block style %}
+<style>
+  body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+  }
+
+  .navbar {
+      width: 100%;
+      background-color: #f0f0f0;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-start;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+  }
+
+  .navbar a {
+      font-size: 32px;
+      font-weight: bold;
+      margin-left: 15px;
+  }
+
+  .container {
+      max-width: 600px;
+      margin: 40px auto 20px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+  }
+
+  .container h1 {
+      font-family: Cambria, sans-serif;
+      text-decoration: underline;
+      text-align: center;
+  }
+
+  .product {
+      width: 100%;
+      padding: 10px 15px;
+      margin: 10px 0;
+      font-family: 'Lucida Sans', sans-serif;
+      font-size: 18px;
+      border-radius: 10px;
+      background-color: rgb(221, 224, 255);
+      box-sizing: border-box;
+  }
+
+  li {
+      list-style-type: decimal;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="navbar">
+    <a href="/">Voltar</a>
+</div>
+
+<div class="container">
+    <h1>Tipos de produto</h1>
+    <ul>
+        {% for item in products %}
+        <li>
+            <div class="product">
+                <span>Nome: {{ item.name }}</span><br>
+                <span>Preço: {{ item.price }}</span><br>
+                <span>Descrição: {{ item.description }}</span><br>
+                <span>Código: {{ item.sku }}</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

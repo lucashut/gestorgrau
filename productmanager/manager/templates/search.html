@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block style %}
+<style>
+  body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+  }
+
+  .navbar {
+      width: 100%;
+      background-color: #f0f0f0;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-start;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+  }
+
+  .navbar a {
+      font-size: 32px;
+      font-weight: bold;
+      margin-left: 15px;
+  }
+
+  .container {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+  }
+
+  .container h1 {
+      text-align: center;
+      font-family: Cambria, sans-serif;
+      margin-bottom: 20px;
+  }
+
+  form {
+      display: flex;
+      flex-direction: column;
+  }
+
+  input, button {
+      margin-top: 10px;
+      padding: 8px;
+      font-size: 16px;
+  }
+
+  ul {
+      margin-top: 20px;
+      padding-left: 20px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="navbar">
+    <a href="/">Voltar</a>
+</div>
+
+<div class="container">
+    <h1>Consultar produto</h1>
+    <form action="#" method="post">
+        {% csrf_token %}
+        <label for="sku-code">Código de barras</label>
+        <input type="number" name="sku" id="sku-code" required>
+        <button type="submit">Consultar produto</button>
+    </form>
+
+    <div>
+        {% if product %}
+            <ul>
+                <li>
+                    <span>Nome: {{ product.name }}</span><br>
+                    <span>Preço: {{ product.price }}</span>
+                </li>
+            </ul>
+        {% endif %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
